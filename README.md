@@ -5,7 +5,7 @@ Geschäftsprozesse im eigenen Berufsumfeld beschreiben
 
 ## Repository Navigation
 
-### [To Wiki]()
+### [To Wiki](https://github.com/Campus-Castolo/M254/wiki)
 
 ### [To Files]()
 
