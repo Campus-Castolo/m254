@@ -17,7 +17,6 @@ Geschäftsprozesse im eigenen Berufsumfeld beschreiben
 |---------|----------------------------|----------------------------|----------------------------|
 | Name    | Rayan Lee Bopp             | Insert Member Name Here    | Insert Member Name Here    |
 | Role    | Lead, Owner                | Insert Member Role Here    | Insert Member Role Here    |
-| Profile | [CastoloLee](https://github.com/CastoloLee) |
-            Insert Member Profile Here | 
-            Insert Member Profile Here |
+| Profile | [CastoloLee](https://github.com/CastoloLee) |Insert Member Profile Here | Insert Member Profile Here |
+
             
