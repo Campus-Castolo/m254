@@ -4,9 +4,9 @@
 
 ## Repository Navigation
 
-### [To Main]()
+### [To Main](https://github.com/Campus-Castolo/M254)
 
-### [To Wiki]()
+### [To Wiki](https://github.com/Campus-Castolo/M254/wiki)
 
 ### [To Project](https://github.com/orgs/Campus-Castolo/projects/2)
 
