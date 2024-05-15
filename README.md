@@ -15,10 +15,10 @@ Geschäftsprozesse im eigenen Berufsumfeld beschreiben
 
 ## Members - Participants - Contributers
 
-|         | Member 1                   | Member 2                   | Member 3                   |
-|---------|----------------------------|----------------------------|----------------------------|
-| Name    | Rayan Lee Bopp             | Insert Member Name Here    | Insert Member Name Here    |
-| Role    | Lead, Owner                | Insert Member Role Here    | Insert Member Role Here    |
-| Profile | [CastoloLee](https://github.com/CastoloLee) |Insert Member Profile Here | Insert Member Profile Here |
+|         | Member 1                                    | Member 2                                                               | Member 3                                                                       | Member 3                                                               |
+|---------|---------------------------------------------|------------------------------------------------------------------------|--------------------------------------------------------------------------------|------------------------------------------------------------------------|
+| Name    | Rayan Lee Bopp                              | Florian Merlin Fröbel                                                  | Nick Ramon Huber                                                               | Lars Schulthess                                                        |
+| Role    | Lead, Owner, Engineer                       | Co-Lead, Engineer                                                      | Engineer                                                                       | Engineer, documentor                                                   |
+| Profile | [CastoloLee](https://github.com/CastoloLee) | [FlorianFro](https://github.com/orgs/Campus-Castolo/people/Florianfro) | [huber-nick-tbz](https://github.com/orgs/Campus-Castolo/people/huber-nick-tbz) | [Fisch69187](https://github.com/orgs/Campus-Castolo/people/Fisch69187) |
 
             
