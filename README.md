@@ -21,3 +21,4 @@ Geschäftsprozesse im eigenen Berufsumfeld beschreiben
 | Role    | Lead, Owner, Engineer                       | Co-Lead, Engineer, documenter                                          | Engineer, documenter                                                           | Engineer, documenter                                                   |
 | Profile | [CastoloLee](https://github.com/CastoloLee) | [FlorianFro](https://github.com/orgs/Campus-Castolo/people/Florianfro) | [huber-nick-tbz](https://github.com/orgs/Campus-Castolo/people/huber-nick-tbz) | [Fisch69187](https://github.com/orgs/Campus-Castolo/people/Fisch69187) |
             
+Roles are still to be determined only here as placeholder.
