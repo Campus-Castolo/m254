@@ -1,4 +1,4 @@
-# LB3 PROJECT NAME
+# 📋 Task Manager
 
 ---
 

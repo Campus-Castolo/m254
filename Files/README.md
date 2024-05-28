@@ -14,8 +14,6 @@
 
 ## CODE FILES IF NECESSARY
 
-### [CODE-FILES-LB2](/LB2-Code/README.md)
-
 ### [CODE-FILE-LB3](/LB3-Code/README.md)
 
 ---
