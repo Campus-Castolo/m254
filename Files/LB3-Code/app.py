@@ -1,6 +1,11 @@
 from flask import Flask, render_template, request, make_response
+from flask_cors import CORS
+from modules.auth import auth
 
 app = Flask(__name__)
+CORS(app)
+
+app.register_blueprint(auth, url_prefix='/api')
 
 @app.route("/")
 def index():
