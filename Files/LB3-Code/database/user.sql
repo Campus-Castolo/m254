@@ -1,4 +1,4 @@
-USE testdatabase
+USE testdatabase;
 
 CREATE TABLE users (
     id CHAR(36) PRIMARY KEY,

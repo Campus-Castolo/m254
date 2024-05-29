@@ -7,10 +7,15 @@ $(document).ready(function() {
         let confirmPassword = $('#register-confirm-password').val();
 
         $.ajax({
-            url: '/api/register',
+            url: '/api/register',  // Ensure the URL matches the registered blueprint route
             method: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({ username, email, password, confirm_password: confirmPassword }),
+            contentType: 'application/x-www-form-urlencoded',  // Change Content-Type to application/x-www-form-urlencoded
+            data: {
+                username: username,
+                email: email,
+                password: password,
+                confirm_password: confirmPassword
+            },
             success: function(response) {
                 $('#message').text(response.message).removeClass().addClass(response.status);
             },

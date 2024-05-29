@@ -1,2 +1,4 @@
 Flask
 Flask_login
+Flask-Cors
+mysql-connector-pytho

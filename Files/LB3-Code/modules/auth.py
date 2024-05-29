@@ -10,9 +10,10 @@ def create_connection():
     try:
         connection = mysql.connector.connect(
             host='localhost',
-            database='your_database',
-            user='your_user',
-            password='your_password'
+            database='testdatabase',
+            user='testaccount',
+            password='abcd12s8rkds',
+            port=3306
         )
         if connection.is_connected():
             return connection
@@ -20,13 +21,12 @@ def create_connection():
         print(f"Error while connecting to MySQL: {e}")
         return None
 
-@auth.route('/register', methods=['POST'])
+@auth.route('/register', methods=['POST'])  # Note: Route does not include /api here
 def register():
-    data = request.get_json()
-    username = data['username']
-    email = data['email']
-    password = data['password']
-    confirm_password = data['confirm_password']
+    username = request.form.get('username')
+    email = request.form.get('email')
+    password = request.form.get('password')
+    confirm_password = request.form.get('confirm_password')
 
     if password != confirm_password:
         return jsonify({'message': 'Passwords do not match!', 'status': 'text-danger'}), 400
@@ -53,3 +53,11 @@ def register():
 @auth.route('/')
 def index():
     return render_template('index.html')
+
+@auth.route('/test-db-connection', methods=['GET'])
+def test_db_connection():
+    connection = create_connection()
+    if connection:
+        return jsonify({'message': 'Database connection successful!'}), 200
+    else:
+        return jsonify({'message': 'Database connection failed!'}), 500
