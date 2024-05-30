@@ -7,9 +7,9 @@ $(document).ready(function() {
         let confirmPassword = $('#register-confirm-password').val();
 
         $.ajax({
-            url: '/api/register',  // Ensure the URL matches the registered blueprint route
+            url: '/api/register',
             method: 'POST',
-            contentType: 'application/x-www-form-urlencoded',  // Change Content-Type to application/x-www-form-urlencoded
+            contentType: 'application/x-www-form-urlencoded',
             data: {
                 username: username,
                 email: email,
@@ -18,9 +18,11 @@ $(document).ready(function() {
             },
             success: function(response) {
                 $('#message').text(response.message).removeClass().addClass(response.status);
+                console.log("Registration response:", response);
             },
             error: function(response) {
                 $('#message').text(response.responseJSON.message).removeClass().addClass('text-danger');
+                console.log("Registration error:", response);
             }
         });
     });

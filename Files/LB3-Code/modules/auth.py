@@ -1,10 +1,11 @@
-from flask import Blueprint, render_template, request, jsonify
+from flask import Blueprint, render_template, request, jsonify, redirect, url_for
 import mysql.connector
 from mysql.connector import Error
 import hashlib
 import uuid
 
 auth = Blueprint('auth', __name__)
+
 
 def create_connection():
     try:
@@ -21,7 +22,7 @@ def create_connection():
         print(f"Error while connecting to MySQL: {e}")
         return None
 
-@auth.route('/register', methods=['POST'])  # Note: Route does not include /api here
+@auth.route('/register', methods=['POST'])
 def register():
     username = request.form.get('username')
     email = request.form.get('email')
@@ -49,10 +50,6 @@ def register():
             connection.close()
     else:
         return jsonify({'message': 'Database connection failed!', 'status': 'text-danger'}), 500
-
-@auth.route('/')
-def index():
-    return render_template('index.html')
 
 @auth.route('/test-db-connection', methods=['GET'])
 def test_db_connection():

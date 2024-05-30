@@ -3,6 +3,7 @@ from flask_cors import CORS
 from modules.auth import auth
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'  # You should set a secret key for session management
 CORS(app)
 
 # Register the auth blueprint with the /api prefix
