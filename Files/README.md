@@ -14,7 +14,7 @@
 
 ## CODE FILES IF NECESSARY
 
-### [CODE-FILE-LB3](/LB3-Code/README.md)
+### [CODE-FILE-LB3](LB3-Code/README.md)
 
 ---
 
