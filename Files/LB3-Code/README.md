@@ -2,6 +2,14 @@
 
 ---
 
+## 📃To-do List
+
+* Create Login function based on existing registery
+* Create Task Creation function based on DB-Structure
+* Create Task Assignment function when creating New Task
+
+---
+
 ## REPOSITORY NAVIGATION
 
 ### [To Main](https://github.com/Campus-Castolo/M254)
