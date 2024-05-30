@@ -1,11 +1,10 @@
-from flask import Blueprint, render_template, request, jsonify, redirect, url_for
+from flask import Blueprint, request, jsonify
 import mysql.connector
 from mysql.connector import Error
 import hashlib
 import uuid
 
 auth = Blueprint('auth', __name__)
-
 
 def create_connection():
     try:
@@ -24,21 +23,28 @@ def create_connection():
 
 @auth.route('/register', methods=['POST'])
 def register():
+    """
+    Register a new user.
+    """
     username = request.form.get('username')
     email = request.form.get('email')
     password = request.form.get('password')
     confirm_password = request.form.get('confirm_password')
 
+    # Check if passwords match
     if password != confirm_password:
         return jsonify({'message': 'Passwords do not match!', 'status': 'text-danger'}), 400
 
+    # Hash the password
     hashed_password = hashlib.sha256(password.encode()).hexdigest()
     user_id = str(uuid.uuid4())
 
+    # Create a database connection
     connection = create_connection()
     if connection:
         cursor = connection.cursor()
         try:
+            # Insert the new user into the database
             cursor.execute("INSERT INTO users (id, username, email, password) VALUES (%s, %s, %s, %s)",
                            (user_id, username, email, hashed_password))
             connection.commit()
@@ -53,6 +59,9 @@ def register():
 
 @auth.route('/test-db-connection', methods=['GET'])
 def test_db_connection():
+    """
+    Test the database connection.
+    """
     connection = create_connection()
     if connection:
         return jsonify({'message': 'Database connection successful!'}), 200
