@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS `testdatabase`.`users` (
   `username` VARCHAR(150) NOT NULL,
   `email` VARCHAR(150) NOT NULL,
   `password` VARCHAR(64) NOT NULL,
+  `verified` TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
