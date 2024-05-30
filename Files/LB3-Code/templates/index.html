@@ -11,40 +11,69 @@
     <title>Task Manager - Dashboard</title>
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <body>
     <!--BROWSER MESSAGE FOR DEPRECATED-->
     <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
     <!--BROWSER MESSAGE FOR DEPRECATED-->
 
     <div class="container">
         <div class="container justify-content-between d-flex">
             <div class="p-2 flex-fill">
                 <nav class="nav nav-pills nav-fill">
-                    <button type="button" class="btn btn-primary bi-plus-square" data-bs-toggle="modal" data-bs-target="#createTask">
-                        Launch demo modal
-                    </button>
-                    <div class="modal fade" id="createTask" tabindex="-1" aria-labelledby="createTask" aria-hidden="true">
-                        <div class="modal-dialog">
+                    <button type="button" class="btn btn-primary bi-plus-square" data-bs-toggle="modal" data-bs-target="#createTask"> Create Task</button>
+                    
+                    <!-- Task Creation Modal -->
+                    <div class="modal fade" id="createTask" tabindex="-1" aria-labelledby="createTaskLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="createTask">Modal title</h1>
+                                    <h5 class="modal-title" id="createTaskLabel">Create New Task</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    ...
+                                    <form id="taskForm">
+                                        <div class="form-group mb-3">
+                                            <label for="taskName">Task Name</label><small><i> *reqiured</i></small>
+                                            <input type="text" class="form-control" id="taskName" placeholder="Enter task name" required>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="taskDescription">Task Description</label><small><i> *reqiured</i></small>
+                                            <textarea class="form-control" id="taskDescription" rows="3" placeholder="Enter task description" required></textarea>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="startDate">Starting Date</label><small><i> *reqiured</i></small>
+                                            <input type="text" class="form-control" id="startDate" placeholder="dd:mm:yyyy" required>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="assignUser">Assign to User</label>
+                                            <select class="form-control" id="assignUser" required>
+                                                <option selected>Myself</option>
+                                                <!-- Add more options as needed -->
+                                            </select>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="createdBy">Task Created by</label><small><i> *reqiured</i></small>
+                                            <select class="form-control" id="createdBy" required>
+                                                <option selected>Myself</option>
+                                                <!-- Add more options as needed -->
+                                            </select>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" form="taskForm" class="btn btn-primary">Save changes</button>
                             </div>
                         </div>
                     </div>
+                </div>
+
 
                     <a class="nav-link bi-code" href="#"> Source Code</a>
                     <a class="nav-link bi-github" href="#"> GitHub</a>
@@ -54,31 +83,83 @@
 
             <div class="p-2 flex-shrink-1">
                 <nav class="nav nav-pills nav-fill">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary bi-person-fill" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Login
-                    </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    ...
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Button to trigger login modal -->
+                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Login</button>
+                    <div id="login-status" class="mb-3"></div>
                 </nav>
             </div>
+            
+            <!-- Login Modal -->
+            <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalToggleLabel">Login</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Login Form -->
+                            <form id="login-form">
+                                <div class="form-group mb-3">
+                                    <label for="login-email">Email address</label>
+                                    <input type="email" class="form-control" id="login-email" placeholder="Enter email" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="login-password">Password</label>
+                                    <input type="password" class="form-control" id="login-password" placeholder="Password" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            </form>
+                            <!-- End Login Form -->
+                        </div>
+                        <div class="modal-footer">
+                            <small>Want to create an account?</small>
+                            <button class="btn btn-secondary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Register Modal -->
+            <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalToggleLabel2">Register</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Registration Form -->
+                            <form id="register-form" method="POST" action="/api/register">
+                                <div class="form-group mb-3">
+                                    <label for="register-username">Username</label>
+                                    <input type="text" class="form-control" id="register-username" name="username" placeholder="Enter username" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="register-email">Email address</label>
+                                    <input type="email" class="form-control" id="register-email" name="email" placeholder="Enter email" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="register-password">Password</label>
+                                    <input type="password" class="form-control" id="register-password" name="password" placeholder="Password" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="register-confirm-password">Confirm Password</label>
+                                    <input type="password" class="form-control" id="register-confirm-password" name="confirm_password" placeholder="Confirm Password" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">Register</button>
+                            </form>
+                            <div id="message" class="mt-3"></div>
+                            <!-- End Registration Form -->
+                        </div>
+                        <div class="modal-footer">
+                            <small>Already have an account?</small>
+                            <button class="btn btn-secondary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Login</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
 
             <div class="p-2 flex-shrink-1">
                 <nav class="nav nav-pills nav-fill">
@@ -94,10 +175,10 @@
                         <div class="offcanvas-body">
                             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                                 <li class="nav-item">
-                                    <button type="button" id="toggleButton" class="btn btn-primary"></button>
+                                    <button type="button" id="toggleButton" class="btn btn-primary w-100">Switch to Dark Mode</button>
                                 </li>
-                                <li class="nav-item">
-                                    <button type="button" id="clearCookiesButton" class="btn btn-danger bi-trash3-fill mt-3"> Clear Cookies</button>
+                                <li class="nav-item mt-3">
+                                    <button type="button" id="clearCookiesButton" class="btn btn-danger w-100 bi-trash3-fill"> Clear Cookies</button>
                                 </li>
                             </ul>
                         </div>
@@ -115,9 +196,9 @@
                         <p class="card-text">See your latest open tasks you need to complete. To see all click below</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
+                        <li class="list-group-item">First Task</li>
+                        <li class="list-group-item">Second Task</li>
+                        <li class="list-group-item">Third Task</li>
                     </ul>
                     <div class="card-body">
                         <a href="#" class="btn btn-primary bi-search"> View all</a>
@@ -129,10 +210,14 @@
                     <div class="card-body">
                         <h5 class="card-title">Functionality of Task-Manager</h5>
                         <p class="card-text">
-                            <li>Support multiple users</li>
-                            <li>Task Creation, Editing, Deletion</li>
-                            <li>Time Tracking</li>
-                            To see more detailed version go to documentation
+                            <ul>
+                                <li>Support multiple users</li>
+                                <li>Task Creation, Editing, Deletion</li>
+                                <li>Time Tracking</li>
+                                <li>Assigning tasks to users</li>
+                                <li>Setting priority of tasks</li>
+                                To see more detailed version go to documentation
+                            </ul>
                         </p>
                         <a href="#" class="btn btn-primary bi-file-earmark-text-fill"> Go to documentation</a>
                     </div>
@@ -145,9 +230,28 @@
                         <p class="card-text">See your latest Completed Tasks. To see all click below.</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
+                        <li class="list-group-item">First Task</li>
+                        <li class="list-group-item">Second Task</li>
+                        <li class="list-group-item">Third Task</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="#" class="btn btn-primary bi-search"> View all</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-sm-3 mb-3 mb-sm-0">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Tasks from others (latest)</h5>
+                        <p class="card-text">See your latest open tasks, from others you need to complete. To see all click below</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">First Task</li>
+                        <li class="list-group-item">Second Task</li>
+                        <li class="list-group-item">Third Task</li>
                     </ul>
                     <div class="card-body">
                         <a href="#" class="btn btn-primary bi-search"> View all</a>
@@ -156,8 +260,18 @@
             </div>
         </div>
     </div>
+
+    
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='js/darkmode.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/register.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </body>
-
 </html>

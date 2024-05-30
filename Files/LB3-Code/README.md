@@ -2,7 +2,7 @@
 
 ---
 
-## Repository Navigation
+## REPOSITORY NAVIGATION
 
 ### [To Main](https://github.com/Campus-Castolo/M254)
 
@@ -17,3 +17,7 @@
 ### [ADD-DOC-FILE]()
 
 ### [ADD-DOC-FILE]()
+
+---
+
+## HOW TO DEVELOP ON OWN SYSTEM

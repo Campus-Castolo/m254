@@ -1,6 +1,13 @@
 from flask import Flask, render_template, request, make_response
+from flask_cors import CORS
+from modules.auth import auth
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'  # You should set a secret key for session management
+CORS(app)
+
+# Register the auth blueprint with the /api prefix
+app.register_blueprint(auth, url_prefix='/api')
 
 @app.route("/")
 def index():
@@ -21,4 +28,4 @@ def clear_cookies():
     return response
 
 if __name__ == "__main__":
-    app.run(debug=True, port="5000", host="localhost")
+    app.run(debug=True, port=5000, host="localhost")

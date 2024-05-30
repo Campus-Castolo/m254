@@ -1,0 +1,5 @@
+# Ignore the entire .vscode directory
+Files/LB3-Code/.vscode/
+
+# Ignore specific gile within .vscode directory
+Files/LB3-Code/.vscode/settings.json
