@@ -3,9 +3,11 @@ import mysql.connector
 from mysql.connector import Error
 import hashlib
 import uuid
+import datetime
 
 auth = Blueprint('auth', __name__)
 
+# creates connection to database with credentials stored in cleartext for easier development
 def create_connection():
     try:
         connection = mysql.connector.connect(
@@ -21,10 +23,14 @@ def create_connection():
         print(f"Error while connecting to MySQL: {e}")
         return None
 
+# Generate personal access token
+def generate_token():
+    return str(uuid.uuid4())
+
 @auth.route('/register', methods=['POST'])
 def register():
     """
-    Register a new user.
+    Register a new user and generate a personal access token.
     """
     username = request.form.get('username')
     email = request.form.get('email')
@@ -38,6 +44,8 @@ def register():
     # Hash the password
     hashed_password = hashlib.sha256(password.encode()).hexdigest()
     user_id = str(uuid.uuid4())
+    access_token = generate_token()
+    created_at = datetime.datetime.now()
 
     # Create a database connection
     connection = create_connection()
@@ -47,6 +55,11 @@ def register():
             # Insert the new user into the database
             cursor.execute("INSERT INTO users (id, username, email, password) VALUES (%s, %s, %s, %s)",
                            (user_id, username, email, hashed_password))
+            
+            # Insert the personal access token into the database
+            cursor.execute("INSERT INTO access_token (token_id, token, created_at, users_id) VALUES (%s, %s, %s, %s)",
+                           (str(uuid.uuid4()), access_token, created_at, user_id))
+            
             connection.commit()
             return jsonify({'message': 'Registration successful!', 'status': 'text-success'}), 201
         except Error as e:
