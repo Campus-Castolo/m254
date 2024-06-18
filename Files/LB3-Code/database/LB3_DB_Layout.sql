@@ -45,7 +45,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `testdatabase`.`task` (
   `id` INT NOT NULL,
   `name` VARCHAR(150) NOT NULL,
-  `createdAt` VARCHAR(45) NULL,
+  `createdAt` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+  `completedAt` DATETIME NULL,
   `priority_id` INT NOT NULL,
   PRIMARY KEY (`id`, `priority_id`),
   INDEX `fk_task_priority1_idx` (`priority_id` ASC) VISIBLE,
@@ -74,6 +75,24 @@ CREATE TABLE IF NOT EXISTS `testdatabase`.`users_has_task` (
   CONSTRAINT `fk_users_has_task_task1`
     FOREIGN KEY (`task_id`)
     REFERENCES `testdatabase`.`task` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `testdatabase`.`access_token`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `testdatabase`.`access_token` (
+  `token_id` VARCHAR(36) NOT NULL,
+  `token` VARCHAR(255) NOT NULL,
+  `created_at` TIMESTAMP NOT NULL,
+  `users_id` CHAR(38) NOT NULL,
+  PRIMARY KEY (`token_id`, `users_id`),
+  INDEX `fk_access_token_users1_idx` (`users_id` ASC) VISIBLE,
+  CONSTRAINT `fk_access_token_users1`
+    FOREIGN KEY (`users_id`)
+    REFERENCES `testdatabase`.`users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
