@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, make_response
 from flask_cors import CORS
 from modules.auth import auth
+from modules.verify import verify
+
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # You should set a secret key for session management
@@ -8,12 +10,18 @@ CORS(app)
 
 # Register the auth blueprint with the /api prefix
 app.register_blueprint(auth, url_prefix='/api')
+# Register the verify blueprint with the /verify prefix
+app.register_blueprint(verify, url_prefix='/verify')
 
 @app.route("/")
 def index():
     theme = request.cookies.get('theme', 'light')
     response = make_response(render_template('index.html', theme=theme))
     return response
+
+@app.route('/verify')
+def verify_page():
+    return render_template('verify.html')
 
 @app.route('/set_theme/<theme>')
 def set_theme(theme):
