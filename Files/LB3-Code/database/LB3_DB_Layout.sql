@@ -1,5 +1,3 @@
--- MySQL Workbench Forward Engineering
-
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
@@ -24,8 +22,8 @@ CREATE TABLE IF NOT EXISTS `testdatabase`.`users` (
   `password` VARCHAR(64) NOT NULL,
   `verified` TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE,
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC))
 ENGINE = InnoDB;
 
 
@@ -49,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `testdatabase`.`task` (
   `completedAt` DATETIME NULL,
   `priority_id` INT NOT NULL,
   PRIMARY KEY (`id`, `priority_id`),
-  INDEX `fk_task_priority1_idx` (`priority_id` ASC) VISIBLE,
+  INDEX `fk_task_priority1_idx` (`priority_id` ASC),
   CONSTRAINT `fk_task_priority1`
     FOREIGN KEY (`priority_id`)
     REFERENCES `testdatabase`.`priority` (`id`)
@@ -65,8 +63,8 @@ CREATE TABLE IF NOT EXISTS `testdatabase`.`users_has_task` (
   `users_id` CHAR(38) NOT NULL,
   `task_id` INT NOT NULL,
   PRIMARY KEY (`users_id`, `task_id`),
-  INDEX `fk_users_has_task_task1_idx` (`task_id` ASC) VISIBLE,
-  INDEX `fk_users_has_task_users_idx` (`users_id` ASC) VISIBLE,
+  INDEX `fk_users_has_task_task1_idx` (`task_id` ASC),
+  INDEX `fk_users_has_task_users_idx` (`users_id` ASC),
   CONSTRAINT `fk_users_has_task_users`
     FOREIGN KEY (`users_id`)
     REFERENCES `testdatabase`.`users` (`id`)
@@ -89,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `testdatabase`.`access_token` (
   `created_at` TIMESTAMP NOT NULL,
   `users_id` CHAR(38) NOT NULL,
   PRIMARY KEY (`token_id`, `users_id`),
-  INDEX `fk_access_token_users1_idx` (`users_id` ASC) VISIBLE,
+  INDEX `fk_access_token_users1_idx` (`users_id` ASC),
   CONSTRAINT `fk_access_token_users1`
     FOREIGN KEY (`users_id`)
     REFERENCES `testdatabase`.`users` (`id`)
