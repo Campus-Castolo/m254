@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
 <html lang="en" data-bs-theme="{{ theme }}">
 
 <head>
@@ -39,15 +39,15 @@
                                 <div class="modal-body">
                                     <form id="taskForm">
                                         <div class="form-group mb-3">
-                                            <label for="taskName">Task Name</label><small><i> *reqiured</i></small>
+                                            <label for="taskName">Task Name</label><small><i> *required</i></small>
                                             <input type="text" class="form-control" id="taskName" placeholder="Enter task name" required>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="taskDescription">Task Description</label><small><i> *reqiured</i></small>
+                                            <label for="taskDescription">Task Description</label><small><i> *required</i></small>
                                             <textarea class="form-control" id="taskDescription" rows="3" placeholder="Enter task description" required></textarea>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="startDate">Starting Date</label><small><i> *reqiured</i></small>
+                                            <label for="startDate">Starting Date</label><small><i> *required</i></small>
                                             <input type="text" class="form-control" id="startDate" placeholder="dd:mm:yyyy" required>
                                         </div>
                                         <div class="form-group mb-3">
@@ -58,7 +58,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="createdBy">Task Created by</label><small><i> *reqiured</i></small>
+                                            <label for="createdBy">Task Created by</label><small><i> *required</i></small>
                                             <select class="form-control" id="createdBy" required>
                                                 <option selected>Myself</option>
                                                 <!-- Add more options as needed -->
@@ -66,19 +66,47 @@
                                         </div>
                                     </form>
                                 </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" form="taskForm" class="btn btn-primary">Save changes</button>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" form="taskForm" class="btn btn-primary">Save changes</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
+                    
                     <a class="nav-link bi-code" href="#"> Source Code</a>
                     <a class="nav-link bi-github" href="#"> GitHub</a>
                     <a class="nav-link bi-person-fill" href="#"> Creators</a>
 
                 </nav>
+
+            </div>
+            
+            <!-- New section for task deletion, similar UI integration as the creation -->
+            <div class="p-2 flex-fill">
+                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteTaskModal">Delete Task</button>
+                
+                <!-- Task Deletion Modal -->
+                <div class="modal fade" id="deleteTaskModal" tabindex="-1" aria-labelledby="deleteTaskLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteTaskLabel">Delete Task</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="deleteTaskForm">
+                                    <div class="form-group mb-3">
+                                        <label for="taskIdToDelete">Task ID</label>
+                                        <input type="number" class="form-control" id="taskIdToDelete" placeholder="Enter Task ID to delete" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-danger">Delete Task</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <div class="p-2 flex-shrink-1">
@@ -318,5 +346,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="{{ url_for('static', filename='js/task.js') }}"></script>
 </body>
 </html>
