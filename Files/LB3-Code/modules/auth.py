@@ -7,7 +7,17 @@ import datetime
 
 auth = Blueprint('auth', __name__)
 
-# creates connection to database with credentials stored in cleartext for easier development
+# Configuration for PyCamunda ExternalTaskWorker
+default_config = {
+    "maxTasks": 1,
+    "lockDuration": 10000,
+    "asyncResponseTimeout": 5000,
+    "retries": 1,
+    "retryTimeout": 5000,
+    "sleepSeconds": 30,
+}
+
+# Creates connection to database with credentials stored in cleartext for easier development
 def create_connection():
     try:
         connection = mysql.connector.connect(
@@ -80,3 +90,4 @@ def test_db_connection():
         return jsonify({'message': 'Database connection successful!'}), 200
     else:
         return jsonify({'message': 'Database connection failed!'}), 500
+

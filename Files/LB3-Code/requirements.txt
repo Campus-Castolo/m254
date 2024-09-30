@@ -2,3 +2,8 @@ Flask
 Flask_login
 Flask-Cors
 mysql-connector-python
+requests
+uuid
+datetime  
+camunda-external-task-client-python
+pycamunda

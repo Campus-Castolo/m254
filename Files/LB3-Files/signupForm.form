@@ -1,0 +1,70 @@
+{
+  "components": [
+    {
+      "label": "Username",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0axo42w",
+        "columns": null
+      },
+      "id": "Field_0ldoyvb",
+      "key": "textfield_username",
+      "description": "Enter username",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Email address",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1gj00bz",
+        "columns": null
+      },
+      "id": "Field_0jneear",
+      "key": "textfield_email",
+      "description": "Enter email",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Password",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0wewl1e",
+        "columns": null
+      },
+      "id": "Field_11g70f2",
+      "key": "textfield_password",
+      "description": "Password",
+      "validate": {
+        "required": false
+      }
+    },
+    {
+      "label": "Confirm Password",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1fhnk79",
+        "columns": null
+      },
+      "id": "Field_1j97fa0",
+      "key": "textfield_confirmpassword",
+      "description": "Please Confirm Password",
+      "validate": {
+        "required": false
+      },
+      "properties": {}
+    }
+  ],
+  "type": "default",
+  "id": "loginForm",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.23.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.21.0",
+  "schemaVersion": 16
+}

@@ -1,0 +1,29 @@
+{
+  "components": [
+    {
+      "label": "access token",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0eizkja",
+        "columns": null
+      },
+      "id": "Field_0gzr3ze",
+      "key": "textfield_accesstoken",
+      "description": "Please insert the generated access token",
+      "validate": {
+        "required": false,
+        "minLength": 36,
+        "maxLength": 36
+      }
+    }
+  ],
+  "type": "default",
+  "id": "verificationForm",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.23.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.21.0",
+  "schemaVersion": 16
+}

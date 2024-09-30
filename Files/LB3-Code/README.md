@@ -7,7 +7,8 @@
 - [X] Create Flask fundament
 - [X] Create Task Manager UI
 - [X] Create Register Function
-- [X] Create DB-Scheme for Register, Task and Login   
+- [X] Create DB-Scheme for Register, Task and Login
+- [ ] Create BPMN Function
 - [ ] Create Login function based on existing registery
 - [ ] Create Task Creation function based on DB-Structure
 - [ ] Create Task Assignment function when creating New Task
